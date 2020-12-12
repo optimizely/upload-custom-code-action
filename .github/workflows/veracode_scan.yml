@@ -1,0 +1,35 @@
+name: Veracode Agent-Based Scan
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+  schedule:
+    - cron: '0 6 * * *'
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v2
+        if: github.event_name == 'pull_request'
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Checkout pushed branch
+        uses: actions/checkout@v2
+        if: github.event_name == 'push'
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Checkout triggering branch
+        uses: actions/checkout@v2
+        if: github.event_name != 'pull_request' && github.event_name != 'push'
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Run scan
+        env:
+          SRCCLR_API_TOKEN: ${{ secrets.WEBDELIVERY_SRCCLR_API_TOKEN }}
+        run: curl -sSL https://download.sourceclear.com/ci.sh | sh -s scan

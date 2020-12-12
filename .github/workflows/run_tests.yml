@@ -1,0 +1,30 @@
+# This workflow will do a clean install of node dependencies and run tests on the version of Node specified
+# in the .nvmrc file.
+# Reference: https://docs.github.com/en/actions/language-and-framework-guides/github-actions-for-javascript-and-typescript
+
+name: Run Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout branch
+      uses: actions/checkout@v2
+
+    - name: Read .nvmrc
+      run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+      id: nvm
+
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '${{ steps.nvm.outputs.NVMRC }}'
+
+    - run: npm ci
+    - run: npm test

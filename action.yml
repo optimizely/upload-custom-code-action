@@ -1,0 +1,56 @@
+name: 'Optimizely - Custom Code Uploader'
+description: 'A Github Action that enables Optimizely customers to upload custom JS / CSS to their projects.'
+branding:
+  icon: 'upload-cloud'
+  color: 'blue'
+inputs:
+  optimizely-access-token:
+    description: 'Access Token for the Optimizely API'
+    required: true
+  code-file-path:
+    description: 'Path from root directory to file with custom code/CSS - required or provide in parameters-comment'
+    required: false
+  custom-code-level:
+    description: 'project, experiment, or variation - required or provide in parameters-comment'
+    required: false
+    default: 'variation'
+  custom-code-type:
+    description: 'custom_code or custom_css - required or provide in parameters-comment'
+    required: false
+    default: 'custom_code'
+  project-id:
+    description: 'Project ID - required for Project Level Changes'
+    required: false
+  experiment-id:
+    description: 'Experiment ID - required for Experiment / Variation Level Changes'
+    required: false
+  variation-id:
+    description: 'Variation ID - required for Variation Level Changes'
+    required: false
+  page-id:
+    description: 'Page ID - required for Variation Level Changes'
+    required: false
+  parameters-comment:
+    description: 'A string to parse that provides the required parameters - see the other parameters
+    to see what needs to be provided in this string'
+    required: false
+  no-comment:
+    description: 'A boolean indicating whether or not a comment should NOT be appended to the end of the custom code/CSS'
+    required: false
+    default: 'false'
+  custom-comment:
+    description: 'A string to be appended to the end of the custom code/CSS'
+    required: false
+    default: '"This code was uploaded via the Optimizely Upload Custom Code Github Action."'
+  fail-silently:
+    description: 'When set to true, only print errors in logs but does not fail entire workflow'
+    required: false
+    default: 'false'
+outputs:
+  success:
+    description: 'Set to true if upload was successful'
+  error_reason:
+    description: 'Set to error reason if upload fails'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
