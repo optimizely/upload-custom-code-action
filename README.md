@@ -81,7 +81,7 @@ This is set to whether or not the code upload is successful.
 If the code upload is not successful, the error message is set to this value.
 
 ## Usage and Examples
-See the [Examples](https://github.com/optimizely/upload-custom-code-action/tree/master/examples) folder in this repository for example workflows that utilize this action.
+See the [Examples](https://github.com/optimizely/upload-custom-code-action/tree/main/examples) folder in this repository for example workflows that utilize this action.
 
 ## License
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)

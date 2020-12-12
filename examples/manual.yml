@@ -1,0 +1,63 @@
+name: Manually Triggered Custom Code Upload
+
+on:
+  workflow_dispatch:
+    inputs:
+      code-file-path:
+        description: 'Path from root directory to file with custom code'
+        required: true
+      custom-code-level:
+        description: 'project, experiment, or variation'
+        required: false
+        default: 'variation'
+      custom-code-type:
+        description: 'custom_code or custom_css'
+        required: false
+        default: 'custom_code'
+      project-id:
+        description: 'Project ID - required for Project Level Changes'
+        required: false
+      experiment-id:
+        description: 'Experiment ID - required for Experiment / Variation Level Changes'
+        required: false
+      variation-id:
+        description: 'Variation ID - required for Variation Level Changes'
+        required: false
+      page-id:
+        description: 'Page ID - required for Variation Level Changes'
+        required: false
+      no-comment:
+        description: 'No Comment - Whether or not a comment SHOULD NOT be appended to the end of the custom code'
+        required: false
+        default: 'false'
+      custom-comment:
+        description: 'Custom Comment - A comment to be appended to the end of the custom code'
+        required: false
+        default: 'This code was uploaded via the Optimizely Upload Custom Code Github Action.'
+      fail-silently:
+        description: 'Fail Silently - When set to true, only print errors in logs but does not fail entire workflow'
+        required: false
+        default: 'false'
+jobs:
+  update_experiment_custom_code:
+    runs-on: ubuntu-latest
+    name: A job to upload custom code to an Optimizely experiment
+    steps:
+      - name: Upload custom code
+        uses: optimizely/upload-custom-code-action@1.0.0
+        id: upload-custom-code
+        with:
+          optimizely-access-token: ${{ secrets.OPTIMIZELY_API_ACCESS_TOKEN }}
+          code-file-path: ${{ github.event.inputs.code-file-path }}
+          custom-code-level: ${{ github.event.inputs.custom-code-level }}
+          custom-code-type: ${{ github.event.inputs.custom-code-type }}
+          project-id: ${{ github.event.inputs.project-id }}
+          experiment-id: ${{ github.event.inputs.experiment-id }}
+          variation-id: ${{ github.event.inputs.variation-id }}
+          page-id: ${{ github.event.inputs.page-id }}
+          no-comment: ${{ github.event.inputs.no-comment }}
+          custom-comment: ${{ github.event.inputs.custom-comment }}
+          fail-silently: ${{ github.event.inputs.fail-silently }}
+      # Use the output from the `upload custom code` step
+      - name: Get the upload result
+        run: echo "Was the process was successful? ${{ steps.upload-custom-code.outputs.success }}"

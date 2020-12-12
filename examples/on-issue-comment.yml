@@ -1,0 +1,43 @@
+name: Custom Code Upload on Issue Comment
+
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  update_experiment_custom_code:
+    runs-on: ubuntu-latest
+    name: A job to upload custom code to an Optimizely experiment
+    steps:
+      - name: Pull Request Comment Trigger
+        uses: Khan/pull-request-comment-trigger@1.0.0
+        id: checkForKeyword
+        with:
+          trigger: '@Upload to Optimizely'
+          reaction: eyes
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      - name: Upload custom code
+        if: ${{ steps.checkForKeyword.outputs.triggered == 'true' }}
+        uses: optimizely/upload-custom-code-action@1.0.0
+        id: upload-custom-code
+        with:
+          optimizely-access-token: ${{ secrets.OPTIMIZELY_API_ACCESS_TOKEN }}
+          parameters-comment: ${{github.event.comment.body}}
+          fail-silently: true
+      - name: Update comment with success notification
+        if: ${{ steps.upload-custom-code.outputs.success == 'true' }}
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{github.event.comment.id}}
+          body: |
+            **--------------**
+            **Upload Status:** The custom code upload was successful.
+          reactions: rocket
+      - name: Update comment with error reason
+        uses: peter-evans/create-or-update-comment@v1
+        if: ${{ steps.upload-custom-code.outputs.success != 'true' && steps.checkForKeyword.outputs.triggered == 'true' }}
+        with:
+          comment-id: ${{github.event.comment.id}}
+          body: |
+            **Upload Status:** The custom code upload was not successful. *Error Message:* ${{steps.upload-custom-code.outputs.error_reason}}
+          reactions: '-1'

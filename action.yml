@@ -1,5 +1,5 @@
 name: 'Optimizely - Custom Code Uploader'
-description: 'A Github Action that enables Optimizely customers to upload custom JS / CSS to their projects.'
+description: 'A Github Action that enables Optimizely customers to upload custom JS / CSS to their projects'
 branding:
   icon: 'upload-cloud'
   color: 'blue'

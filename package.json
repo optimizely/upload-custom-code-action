@@ -1,7 +1,7 @@
 {
   "name": "upload-custom-code-action",
   "version": "1.0.0",
-  "description": "A Github Action that enables Optimizely customers to upload custom JS / CSS to their projects.",
+  "description": "A Github Action that enables Optimizely customers to upload custom JS / CSS to their projects",
   "main": "src/index.js",
   "scripts": {
     "build": "ncc build src/index.js",
@@ -20,8 +20,7 @@
   "homepage": "https://github.com/optimizely/upload-custom-code-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.4",
-    "isomorphic-fetch": "^3.0.0",
-    "node-fetch": "^2.6.1"
+    "isomorphic-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.25.1",
