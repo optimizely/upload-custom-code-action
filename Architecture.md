@@ -22,7 +22,7 @@ At a high level, `run`:
 
 If at any point errors are encountered, abort and bubble those up to `index.js`.
 
-If completely successful, report out to Github's action mechanism (`core.setOutput`) 
+If completely successful, report out to Github's action mechanism 
 that we were successful.
 
 ## Helper Folder and Files
