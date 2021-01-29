@@ -54,7 +54,7 @@ Linting is handled by ESLint. See `.eslintrc.js` for the configuration.
 Linting is run automatically as a pre-commit hook.
 
 ## Updating and Deploying
-1. Clone the Repo and make your code updates.
+1. Clone the Repo and make your code updates on a new branch.
 2. Generate a new action package with `npm run-script build`.
 3. Commit and push a PR to Github. Get it approved and merged
 into main. 
