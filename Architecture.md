@@ -25,7 +25,7 @@ If at any point errors are encountered, abort and bubble those up to `index.js`.
 If completely successful, report out to Github's action mechanism 
 that we were successful.
 
-### Helper Folder and Files
+## Helper Folder and Files
 * `Env` contains functions used to parse the parameters. All
 verification of parameter values are done here.
 
