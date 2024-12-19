@@ -7,12 +7,21 @@ on:
         description: 'Path from root directory to file with custom code'
         required: true
       custom-code-level:
-        description: 'project, experiment, or variation'
-        required: false
+        description: 'Select the level of custom code upload'
+        required: true
+        type: choice
+        options:
+          - project
+          - experiment
+          - variation
         default: 'variation'
       custom-code-type:
-        description: 'custom_code or custom_css'
-        required: false
+        description: 'Select the type of custom code (Custom JS or Custom CSS)'
+        required: true
+        type: choice
+        options:
+          - custom_code
+          - custom_css
         default: 'custom_code'
       project-id:
         description: 'Project ID - required for Project Level Changes'
@@ -28,7 +37,11 @@ on:
         required: false
       no-comment:
         description: 'No Comment - Whether or not a comment SHOULD NOT be appended to the end of the custom code'
-        required: false
+        required: true
+        type: choice
+        options:
+          - true
+          - false
         default: 'false'
       custom-comment:
         description: 'Custom Comment - A comment to be appended to the end of the custom code'
@@ -36,15 +49,42 @@ on:
         default: 'This code was uploaded via the Optimizely Upload Custom Code Github Action.'
       fail-silently:
         description: 'Fail Silently - When set to true, only print errors in logs but does not fail entire workflow'
-        required: false
+        required: true
+        type: choice
+        options:
+          - true
+          - false
         default: 'false'
+
 jobs:
+  validate_inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate required fields
+        run: |
+          if [ "${{ github.event.inputs.custom-code-level }}" = "project" ] && [ -z "${{ github.event.inputs.project-id }}" ]; then
+            echo "Error: 'project-id' is required for custom-code-level 'project'."
+            exit 1
+          fi
+          if [ "${{ github.event.inputs.custom-code-level }}" = "experiment" ] && [ -z "${{ github.event.inputs.experiment-id }}" ]; then
+            echo "Error: 'experiment-id' is required for custom-code-level 'experiment'."
+            exit 1
+          fi
+          if [ "${{ github.event.inputs.custom-code-level }}" = "variation" ] && [ -z "${{ github.event.inputs.variation-id }}" ]; then
+            echo "Error: 'variation-id' is required for custom-code-level 'variation'."
+            exit 1
+          fi
+
   update_experiment_custom_code:
     runs-on: ubuntu-latest
     name: A job to upload custom code to an Optimizely experiment
+    needs: validate_inputs
     steps:
+      - name: My first step - check out repository
+        uses: actions/checkout@v4
+
       - name: Upload custom code
-        uses: optimizely/upload-custom-code-action@1.0.0
+        uses: optimizely/upload-custom-code-action@v1.0.3
         id: upload-custom-code
         with:
           optimizely-access-token: ${{ secrets.OPTIMIZELY_API_ACCESS_TOKEN }}
@@ -60,4 +100,4 @@ jobs:
           fail-silently: ${{ github.event.inputs.fail-silently }}
       # Use the output from the `upload custom code` step
       - name: Get the upload result
-        run: echo "Was the process was successful? ${{ steps.upload-custom-code.outputs.success }}"
+        run: echo "Was the process successful? ${{ steps.upload-custom-code.outputs.success }}"

@@ -18,7 +18,7 @@ jobs:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - name: Upload custom code
         if: ${{ steps.checkForKeyword.outputs.triggered == 'true' }}
-        uses: optimizely/upload-custom-code-action@1.0.0
+        uses: optimizely/upload-custom-code-action@v1.0.3
         id: upload-custom-code
         with:
           optimizely-access-token: ${{ secrets.OPTIMIZELY_API_ACCESS_TOKEN }}
