@@ -52,5 +52,5 @@ outputs:
   error_reason:
     description: 'Set to error reason if upload fails'
 runs:
-  using: 'node12'
+  using: 'node20'
   main: 'dist/index.js'

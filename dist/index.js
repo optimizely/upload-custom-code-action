@@ -1,9 +1,8 @@
-module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 241:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ 914:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -15,8 +14,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const os = __importStar(__webpack_require__(87));
-const utils_1 = __webpack_require__(278);
+const os = __importStar(__nccwpck_require__(857));
+const utils_1 = __nccwpck_require__(302);
 /**
  * Commands
  *
@@ -88,8 +87,8 @@ function escapeProperty(s) {
 
 /***/ }),
 
-/***/ 186:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ 484:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -110,11 +109,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const command_1 = __webpack_require__(241);
-const file_command_1 = __webpack_require__(717);
-const utils_1 = __webpack_require__(278);
-const os = __importStar(__webpack_require__(87));
-const path = __importStar(__webpack_require__(622));
+const command_1 = __nccwpck_require__(914);
+const file_command_1 = __nccwpck_require__(753);
+const utils_1 = __nccwpck_require__(302);
+const os = __importStar(__nccwpck_require__(857));
+const path = __importStar(__nccwpck_require__(928));
 /**
  * The code to exit an action
  */
@@ -333,8 +332,8 @@ exports.getState = getState;
 
 /***/ }),
 
-/***/ 717:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ 753:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -349,9 +348,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const fs = __importStar(__webpack_require__(747));
-const os = __importStar(__webpack_require__(87));
-const utils_1 = __webpack_require__(278);
+const fs = __importStar(__nccwpck_require__(896));
+const os = __importStar(__nccwpck_require__(857));
+const utils_1 = __nccwpck_require__(302);
 function issueCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
     if (!filePath) {
@@ -369,7 +368,7 @@ exports.issueCommand = issueCommand;
 
 /***/ }),
 
-/***/ 278:
+/***/ 302:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -395,13 +394,13 @@ exports.toCommandValue = toCommandValue;
 
 /***/ }),
 
-/***/ 340:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ 109:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var realFetch = __webpack_require__(467);
+var realFetch = __nccwpck_require__(705);
 module.exports = function(url, options) {
 	if (/^\/\//.test(url)) {
 		url = 'https:' + url;
@@ -419,8 +418,8 @@ if (!global.fetch) {
 
 /***/ }),
 
-/***/ 467:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ 705:
+/***/ ((module, exports, __nccwpck_require__) => {
 
 "use strict";
 
@@ -429,11 +428,11 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var Stream = _interopDefault(__webpack_require__(413));
-var http = _interopDefault(__webpack_require__(605));
-var Url = _interopDefault(__webpack_require__(835));
-var https = _interopDefault(__webpack_require__(211));
-var zlib = _interopDefault(__webpack_require__(761));
+var Stream = _interopDefault(__nccwpck_require__(203));
+var http = _interopDefault(__nccwpck_require__(611));
+var Url = _interopDefault(__nccwpck_require__(16));
+var https = _interopDefault(__nccwpck_require__(692));
+var zlib = _interopDefault(__nccwpck_require__(106));
 
 // Based on https://github.com/tmpvar/jsdom/blob/aa85b2abf07766ff7bf5c1f6daafb3726f2f2db5/lib/jsdom/living/blob.js
 
@@ -584,7 +583,7 @@ FetchError.prototype.name = 'FetchError';
 
 let convert;
 try {
-	convert = __webpack_require__(877).convert;
+	convert = (__nccwpck_require__(78).convert);
 } catch (e) {}
 
 const INTERNALS = Symbol('Body internals');
@@ -2067,7 +2066,7 @@ fetch.Promise = global.Promise;
 
 module.exports = exports = fetch;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.default = exports;
+exports["default"] = exports;
 exports.Headers = Headers;
 exports.Request = Request;
 exports.Response = Response;
@@ -2076,7 +2075,7 @@ exports.FetchError = FetchError;
 
 /***/ }),
 
-/***/ 438:
+/***/ 992:
 /***/ ((__unused_webpack_module, exports) => {
 
 exports.CUSTOM_CODE_LEVELS = {
@@ -2100,11 +2099,11 @@ exports.OPTIMIZELY_API_ENDPOINTS = {
 
 /***/ }),
 
-/***/ 10:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ 925:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
-const core = __webpack_require__(186);
-const constants = __webpack_require__(438);
+const core = __nccwpck_require__(484);
+const constants = __nccwpck_require__(992);
 
 /**
  * @typedef {Object} Inputs
@@ -2257,41 +2256,15 @@ exports.parseComment = parseComment;
 
 /***/ }),
 
-/***/ 351:
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ 936:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
-const core = __webpack_require__(186);
-const { run } = __webpack_require__(713);
-
-/**
- * Calls the main function to start the custom code upload.
- *
- * If there are any errors, output them via Github's output mechanism via the 'error_reason' field.
- *   - Unless the fail-silently parameter is sent to true, also announce via the Github Action API
- *     that the action has failed.
- */
-run().catch((error) => {
-  console.error(error.message);
-  core.setOutput('error_reason', error.message);
-
-  const failSilently = core.getInput('fail-silently');
-  if (failSilently !== 'true') {
-    core.setFailed(error.message);
-  }
-});
-
-
-/***/ }),
-
-/***/ 713:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-const core = __webpack_require__(186);
-__webpack_require__(340);
-const { promises: fs } = __webpack_require__(747);
-const env = __webpack_require__(10);
-const constants = __webpack_require__(438);
-const { appendCommentToCustomCode, generateExpData, generateProjectData } = __webpack_require__(70);
+const core = __nccwpck_require__(484);
+__nccwpck_require__(109);
+const { promises: fs } = __nccwpck_require__(896);
+const env = __nccwpck_require__(925);
+const constants = __nccwpck_require__(992);
+const { appendCommentToCustomCode, generateExpData, generateProjectData } = __nccwpck_require__(899);
 
 /**
  * The main function that handles the uploading the custom code to Optimizely.
@@ -2389,10 +2362,10 @@ exports.run = async function() {
 
 /***/ }),
 
-/***/ 70:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ 899:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
-const constants = __webpack_require__(438);
+const constants = __nccwpck_require__(992);
 
 /**
  * Returns the code with the customComment appended to the end in a comment block.
@@ -2564,7 +2537,7 @@ exports.findById = findById;
 
 /***/ }),
 
-/***/ 877:
+/***/ 78:
 /***/ ((module) => {
 
 module.exports = eval("require")("encoding");
@@ -2572,67 +2545,67 @@ module.exports = eval("require")("encoding");
 
 /***/ }),
 
-/***/ 747:
+/***/ 896:
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("fs");;
+module.exports = require("fs");
 
 /***/ }),
 
-/***/ 605:
+/***/ 611:
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("http");;
+module.exports = require("http");
 
 /***/ }),
 
-/***/ 211:
+/***/ 692:
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("https");;
+module.exports = require("https");
 
 /***/ }),
 
-/***/ 87:
+/***/ 857:
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("os");;
+module.exports = require("os");
 
 /***/ }),
 
-/***/ 622:
+/***/ 928:
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("path");;
+module.exports = require("path");
 
 /***/ }),
 
-/***/ 413:
+/***/ 203:
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("stream");;
+module.exports = require("stream");
 
 /***/ }),
 
-/***/ 835:
+/***/ 16:
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("url");;
+module.exports = require("url");
 
 /***/ }),
 
-/***/ 761:
+/***/ 106:
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("zlib");;
+module.exports = require("zlib");
 
 /***/ })
 
@@ -2642,10 +2615,11 @@ module.exports = require("zlib");;
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
+/******/ 	function __nccwpck_require__(moduleId) {
 /******/ 		// Check if module is in cache
-/******/ 		if(__webpack_module_cache__[moduleId]) {
-/******/ 			return __webpack_module_cache__[moduleId].exports;
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
@@ -2657,7 +2631,7 @@ module.exports = require("zlib");;
 /******/ 		// Execute the module function
 /******/ 		var threw = true;
 /******/ 		try {
-/******/ 			__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 			__webpack_modules__[moduleId].call(module.exports, module, module.exports, __nccwpck_require__);
 /******/ 			threw = false;
 /******/ 		} finally {
 /******/ 			if(threw) delete __webpack_module_cache__[moduleId];
@@ -2668,12 +2642,31 @@ module.exports = require("zlib");;
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat */
+/******/ 	/* webpack/runtime/asset-relocator-loader */
+/******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
 /******/ 	
-/******/ 	__webpack_require__.ab = __dirname + "/";/************************************************************************/
-/******/ 	// module exports must be returned from runtime so entry inlining is disabled
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(351);
+/************************************************************************/
+var __webpack_exports__ = {};
+const core = __nccwpck_require__(484);
+const { run } = __nccwpck_require__(936);
+
+/**
+ * Calls the main function to start the custom code upload.
+ *
+ * If there are any errors, output them via Github's output mechanism via the 'error_reason' field.
+ *   - Unless the fail-silently parameter is sent to true, also announce via the Github Action API
+ *     that the action has failed.
+ */
+run().catch((error) => {
+  console.error(error.message);
+  core.setOutput('error_reason', error.message);
+
+  const failSilently = core.getInput('fail-silently');
+  if (failSilently !== 'true') {
+    core.setFailed(error.message);
+  }
+});
+
+module.exports = __webpack_exports__;
 /******/ })()
 ;
